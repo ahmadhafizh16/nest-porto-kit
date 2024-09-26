@@ -1,0 +1,19 @@
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class AuthService {
+    constructor(
+        private validationService: ValidationService,
+    ) { }
+
+    async registerUser(request: Request): Promise<any> {
+        const variable: Request = this.validationService.validate(
+            Validation.RULES,
+            request
+        );
+
+        const action = await this.Action.run(variable);
+
+        return action;
+    }
+}

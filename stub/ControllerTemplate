@@ -1,0 +1,28 @@
+import { Controller, Get, Req } from '@nestjs/common';
+import { BaseController } from 'src/ship/Parent/Controller/BaseController';
+import { ResponseWrapper } from 'src/ship/Parent/Transformer/wrapper.transformer';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+
+@ApiTags('temp')
+@Controller('temp')
+export class TempController extends BaseController {
+    constructor(
+        // private userService: UserService
+    ) {
+        super();
+    }
+
+    @Get("/")
+    @ApiBearerAuth()
+    @ApiBody({
+        // type: LoginUserRequest
+    })
+    @ApiOperation({ summary: ''})
+    async funct(@Req() request: Request): Promise<ResponseWrapper<Object>> {
+
+        return {
+            data : "A"
+            // data: this.transform(user, new UserTransformer())
+        }
+    }
+}
